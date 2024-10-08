@@ -90,7 +90,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         config,
         (decodedText, decodedResult) => {
           this.qrResult = decodedText;
-          this.attendanceService
+          if (this.qrResult.includes("Asistencia")) {
+            this.attendanceService
             .register(this.clase.courseId)
             .then((res: any) => {
               if (res.success) {
@@ -115,6 +116,17 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                 });
               }
             });
+          }else{
+            Swal.fire({
+              title: 'QR Inválido',
+              text: 'El QR escaneado no es válido para registrar asistencia.',
+              icon: 'error',
+              confirmButtonText: 'Intentar de nuevo',
+              confirmButtonColor: '#d33',
+              background: '#ffe5e5'
+            });
+          }
+
           this.stopScanner();
         },
         (errorMessage) => {
