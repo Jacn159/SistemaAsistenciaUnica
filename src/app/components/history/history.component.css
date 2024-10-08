@@ -1,0 +1,187 @@
+/* Botones personalizados */
+.bg-purple {
+  background-color: #4a0072;
+  box-sizing: border-box;
+}
+html{
+  background-color: #4a0072 !important;
+}
+body{
+  background-color: #4a0072 !important;
+  padding: 0;
+  margin: 0;
+}
+.contenedor {
+  background-color: #4a0072;
+  height: 100vh;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* Texto morado */
+.text-purple {
+  color: #4a0072;
+}
+
+.class-card {
+  background: #4a0072 !important;
+  transition: 0.5s;
+}
+.class-card:hover {
+  background: rgb(169, 96, 190) !important;
+}
+.section {
+  width: 750px;
+}
+/* Botones */
+.btn-purple {
+  background-color: #4a0072;
+  color: white;
+  border: none;
+  transition: 0.5s;
+}
+
+.btn-outline-purple {
+  color: #4a0072;
+  border: 2px solid #4a0072;
+}
+
+/* Bordes morados */
+.border-purple {
+  border-color: #4a0072;
+}
+
+/* Fondo blanco en los contenedores */
+.bg-white {
+  background-color: white;
+}
+
+/* Bordes suaves y sombra ligera */
+.border-radius {
+  border-radius: 10px;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegura que ocupe toda la pantalla */
+.container-fluid {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Haciendo que la barra lateral y el contenido principal sean flexibles */
+.d-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Ajustes de ancho para pantallas grandes */
+aside {
+  width: 300px;
+}
+
+section {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Cambiar el diseño a una sola columna en pantallas pequeñas */
+  .d-flex {
+    flex-direction: column;
+  }
+  .contenedor{
+    height: 300vh;
+    display: block !important;
+    padding-top: 100rem;
+  }
+  .section {
+    width: 100%;
+  }
+  /* Aumentar el margen entre la barra lateral y el contenido */
+  section {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  /* Ajustar los anchos de los botones y las tarjetas */
+  aside {
+    width: 100%;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  /* Hacer que los contenedores se ajusten al ancho completo */
+  .border {
+    margin-bottom: 20px;
+  }
+
+  .shadow {
+    box-shadow: none;
+  }
+
+  .border-radius {
+    border-radius: 5px;
+  }
+
+  /* Ajustar las imágenes y cuadros para que sean más pequeños en móvil */
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
+  div[style*="height: 150px;"] {
+    height: 100px;
+  }
+}
+/* register.component.css */
+.scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-reader {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+  border: 2px solid #3f51b5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+p {
+  font-size: 18px;
+  color: #333;
+}
+
+@media (max-width: 576px) {
+  /* Ajustes adicionales para pantallas más pequeñas */
+  h2,
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Ajuste para las tarjetas de estado y QR */
+  div[style*="flex: 1;"] {
+    flex-direction: column;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+/* Bordes personalizados */
+.border-purple {
+  border-color: #6f42c1 !important;
+}
+

@@ -1,0 +1,68 @@
+<div
+  class="d-flex justify-content-around align-items-center vh-100 w-100 flex-column flex-md-row gap-5"
+  style="background-color: #5b2c6f; gap: 2rem; padding: 1rem"
+>
+  <!-- Left Side (Texto e Imagen) -->
+  <div
+    class="d-flex flex-column justify-content-center align-items-s text-white text-center text-md-start mb-4 mb-md-0"
+  >
+    <h1 class="fw-bold text-center">Facultad de Ingeniería de Sistemas - UNICA</h1>
+    <h3>Sistema de Asistencias</h3>
+    <img
+      src="assets/img/inges.png"
+      alt="Foto de la Facultad"
+      class="img-fluid mt-4 rounded"
+      style="max-width: 100%; height: auto"
+    />
+  </div>
+
+  <!-- Right Side (Login) -->
+  <div
+    class="d-flex flex-column align-items-center justify-content-center bg-white p-4 p-md-5 rounded shadow w-100 w-md-50"
+    style="max-width: 500px"
+  >
+    <img
+      src="assets/img/logo.jpg"
+      alt="Logo Facultad"
+      class="mb-4"
+      style="max-width: 150px; width: 100%"
+    />
+    <form
+      (ngSubmit)="onLogin()"
+      class="d-flex flex-column w-100 align-items-center"
+      [formGroup]="loginForm"
+    >
+      <!-- Campo de Usuario con Icono -->
+      <div class="form-group mb-3 w-100">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class="bi bi-person-fill"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control text-center"
+            formControlName="username"
+            placeholder="USERNAME"
+          />
+        </div>
+      </div>
+
+      <!-- Campo de Contraseña con Icono -->
+      <div class="form-group mb-3 w-100">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input
+            type="password"
+            class="form-control text-center"
+            formControlName="password"
+            placeholder="PASSWORD"
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+    </form>
+  </div>
+</div>

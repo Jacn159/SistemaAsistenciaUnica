@@ -1,0 +1,38 @@
+/* Fondo morado global */
+.bg-purple {
+  background-color: #4A0072;
+}
+
+/* Texto morado */
+.text-purple {
+  color: #4A0072;
+}
+
+/* Botones */
+.btn-purple {
+  background-color: #6A0080;
+  color: white;
+  border: none;
+}
+
+.btn-outline-purple {
+  color: #4A0072;
+  border: 2px solid #4A0072;
+}
+
+/* Perfil */
+.profile-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+button {
+  margin-top: 20px;
+}

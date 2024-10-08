@@ -1,0 +1,54 @@
+<div class="container-fluid vh-100 d-flex flex-column bg-purple p-0">
+  <!-- Header -->
+  <header
+    class="bg-white text-purple py-3 px-5 d-flex justify-content-around gap-3 w-75 m-auto mt-4 rounded align-items-center"
+    style="border-bottom: 3px solid #4a0072"
+  >
+    <img
+      src="/assets/img/logo.jpg"
+      alt=""
+      class="img-fluid rounded"
+      style="width: 80px;height: 80px;"
+    />
+    <h2 class="text-center mb-0 fw-bolder">
+      FACULTAD DE INGENIERÍA DE SISTEMAS - CONTROL DE ASISTENCIA
+    </h2>
+  </header>
+
+  <!-- Main Content Area -->
+
+  <!-- Main Content -->
+  <div class="container-fluid vh-100 d-flex flex-column bg-purple p-0">
+
+    <!-- Main Content Area -->
+    <div
+      class="d-flex flex-grow-1 justify-content-center align-items-center p-4"
+    >
+      <!-- Profile Card -->
+      <div
+        class="profile-card bg-white text-dark p-4 shadow"
+        style="width: 400px; border-radius: 10px; border: 2px solid #4a0072"
+      >
+        <div class="text-center mb-4">
+          <img
+            [src]="'/assets/img/' + imageName + '.jpg'"
+            alt="Usuario"
+            class="rounded-circle img-fluid mb-3"
+            style="width: 150px; height: 150px; border: 3px solid #4a0072"
+          />
+          <h4 class="text-purple">{{imageName}}</h4>
+          <p class="text-muted">{{email}}</p>
+        </div>
+        <div class="profile-details">
+          <p><strong>Nombre completo:</strong> {{ nombres }}</p>
+          <p><strong>Email:</strong> {{ email }}</p>
+          <p><strong>Rol:</strong> Docente</p>
+        </div>
+        <button class="btn btn-purple btn-lg w-100 mt-3" [routerLink]="['/home']" routerLinkActive="router-link-active" >Volver</button>
+        <button class="btn btn-outline-purple btn-lg w-100 mt-3" (click)="logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

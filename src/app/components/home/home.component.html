@@ -1,0 +1,175 @@
+<div class=" d-flex flex-column bg-purple p-0 contenedor">
+  <!-- Header -->
+  <header
+    class="bg-white text-purple py-3 px-5 d-flex justify-content-around gap-3 w-75 m-auto mt-4 rounded align-items-center"
+    style="border-bottom: 3px solid #4a0072"
+  >
+    <img
+      src="/assets/img/logo.jpg"
+      alt=""
+      class="img-fluid rounded"
+      style="max-width: 80px"
+    />
+    <h2 class="text-center mb-0 fw-bolder">
+      FACULTAD DE INGENIERÍA DE SISTEMAS - CONTROL DE ASISTENCIA
+    </h2>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="d-flex  p-4 bg-purple vh-100">
+    <!-- Sidebar -->
+    <aside
+      class="d-flex flex-column align-items-center bg-white text-dark p-4"
+      style="border: 2px solid #4a0072; border-radius: 10px; max-width: 350px"
+    >
+      <div class="text-center mb-4">
+        <img
+          [src]="'/assets/img/' + imageName + '.jpg'"
+          alt="Jhon Lovera"
+          class="rounded-circle img-fluid mb-3"
+          style="width: 150px; height: 150px; border: 3px solid #4a0072"
+        />
+        <h4 class="text-purple">{{ nombres }}</h4>
+        <p class="text-muted">Ing. de Sistemas</p>
+      </div>
+      <button
+        class="btn btn-purple btn-lg w-100 mb-3"
+        (click)="redirectTo('/home')"
+      >
+        Principal
+      </button>
+      <button
+        class="btn btn-purple btn-lg w-100 mb-3"
+        (click)="redirectTo('/register')"
+      >
+        Registrar Asistencia
+      </button>
+      <button class="btn btn-purple btn-lg w-100 mb-3" [routerLink]="['/history']">
+        Historial de Asistencia
+      </button>
+      <button
+        class="btn btn-purple btn-lg w-100 mb-3"
+        (click)="redirectTo('/profile')"
+      >
+        Perfil
+      </button>
+      <button class="btn btn-purple btn-lg w-100 mb-3" (click)="logout()">
+        Cerrar Sesión
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <section
+      class="d-flex flex-column flex-grow-1 p-4 bg-white section"
+      style=" border-radius: 10px"
+    >
+      <!-- Date and Navigation -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark">{{ today }}</h3>
+      </div>
+
+      <!-- Class Schedule -->
+      <!-- Asegúrate de incluir Bootstrap en tu proyecto para que las clases funcionen correctamente -->
+
+      <div
+        class="d-flex justify-content-between text-center rounded flex-wrap h-100"
+        style="border: 1px solid purple"
+      >
+        <!-- Lunes -->
+        <div
+          class="day-column flex-grow-1 mx-2 border p-2 mb-3"
+          style="min-width: 200px; flex: 1 1 200px"
+        >
+          <h5 class="text-dark mb-3" style="border-bottom: 2px solid purple">
+            Lunes
+          </h5>
+          <div
+            *ngFor="let clase of getClassesForDay('LUNES')"
+            class="class-card bg-dark-purple text-white p-2 mb-2 rounded"
+            style="background: #4a0072; cursor: pointer"
+            (click)="setClase(clase)"
+          >
+            {{ capitalizedWord(clase.courseName) }}<br />
+            {{ clase.startDateTime }} - {{ clase.endDateTime }}
+          </div>
+        </div>
+
+        <!-- Martes -->
+        <div
+          class="day-column flex-grow-1 mx-2 border p-2 mb-3"
+          style="min-width: 200px; flex: 1 1 200px"
+        >
+          <h5 class="text-dark mb-3" style="border-bottom: 2px solid purple">
+            Martes
+          </h5>
+          <div
+            *ngFor="let clase of getClassesForDay('MARTES')"
+            class="class-card bg-dark-purple text-white p-2 mb-2 rounded"
+            style="background: #4a0072; cursor: pointer"
+            (click)="setClase(clase)"
+          >
+            {{ capitalizedWord(clase.courseName) }}<br />
+            {{ clase.startDateTime }} - {{ clase.endDateTime }}
+          </div>
+        </div>
+
+        <!-- Miércoles -->
+        <div
+          class="day-column flex-grow-1 mx-2 border p-2 mb-3"
+          style="min-width: 200px; flex: 1 1 200px"
+        >
+          <h5 class="text-dark mb-3" style="border-bottom: 2px solid purple">
+            Miércoles
+          </h5>
+          <div
+            *ngFor="let clase of getClassesForDay('MIÉRCOLES')"
+            class="class-card bg-dark-purple text-white p-2 mb-2 rounded"
+            style="background: #4a0072; cursor: pointer"
+            (click)="setClase(clase)"
+          >
+            {{ capitalizedWord(clase.courseName) }}<br />
+            {{ clase.startDateTime }} - {{ clase.endDateTime }}
+          </div>
+        </div>
+
+        <!-- Jueves -->
+        <div
+          class="day-column flex-grow-1 mx-2 border p-2 mb-3"
+          style="min-width: 200px; flex: 1 1 200px"
+        >
+          <h5 class="text-dark mb-3" style="border-bottom: 2px solid purple">
+            Jueves
+          </h5>
+          <div
+            *ngFor="let clase of getClassesForDay('JUEVES')"
+            class="class-card bg-dark-purple text-white p-2 mb-2 rounded"
+            style="background: #4a0072; cursor: pointer"
+            (click)="setClase(clase)"
+          >
+            {{ capitalizedWord(clase.courseName) }}<br />
+            {{ clase.startDateTime }} - {{ clase.endDateTime }}
+          </div>
+        </div>
+
+        <!-- Viernes -->
+        <div
+          class="day-column flex-grow-1 mx-2 border p-2 mb-3"
+          style="min-width: 200px; flex: 1 1 200px"
+        >
+          <h5 class="text-dark mb-3" style="border-bottom: 2px solid purple">
+            Viernes
+          </h5>
+          <div
+            *ngFor="let clase of getClassesForDay('VIERNES')"
+            class="class-card bg-dark-purple text-white p-2 mb-2 rounded"
+            style="background: #4a0072; cursor: pointer"
+            (click)="setClase(clase)"
+          >
+            {{ capitalizedWord(clase.courseName) }}<br />
+            {{ clase.startDateTime }} - {{ clase.endDateTime }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

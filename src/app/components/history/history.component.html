@@ -1,0 +1,103 @@
+<div class="container-fluid vh-100 d-flex flex-column bg-purple p-0">
+  <!-- Header -->
+  <header
+    class="bg-white text-purple py-3 px-5 d-flex justify-content-around gap-3 w-75 m-auto mt-4 rounded align-items-center"
+    style="border-bottom: 3px solid #4a0072"
+  >
+    <img
+      src="/assets/img/logo.jpg"
+      alt=""
+      class="img-fluid rounded"
+      style="max-width: 80px"
+    />
+    <h2 class="text-center mb-0 fw-bolder">
+      FACULTAD DE INGENIERÍA DE SISTEMAS - CONTROL DE ASISTENCIA
+    </h2>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="d-flex flex-grow-1 p-4">
+    <!-- Sidebar -->
+    <aside
+    class="d-flex flex-column align-items-center bg-white text-dark p-4"
+    style="border: 2px solid #4a0072; border-radius: 10px; width: 350px"
+  >
+    <div class="text-center mb-4">
+      <img
+        [src]="'/assets/img/' + imageName + '.jpg'"
+        alt="Jhon Lovera"
+        class="rounded-circle img-fluid mb-3"
+        style="width: 150px; height: 150px; border: 3px solid #4a0072"
+      />
+      <h4 class="text-purple">{{ nombres }}</h4>
+      <p class="text-muted">Ing. de Sistemas</p>
+    </div>
+    <button
+      class="btn btn-purple btn-lg w-100 mb-3"
+      (click)="redirectTo('/home')"
+    >
+      Principal
+    </button>
+
+    <button class="btn btn-purple btn-lg w-100 mb-3"  [routerLink]="['/history']">
+      Historial de Asistencia
+    </button>
+    <button class="btn btn-purple btn-lg w-100 mb-3" (click)="redirectTo('/profile')">
+      Perfil
+    </button>
+    <button class="btn btn-purple btn-lg w-100 mb-3" (click)="logout()">
+      Cerrar Sesión
+    </button>
+  </aside>
+
+  <section
+  class="d-flex flex-column flex-grow-1 bg-white p-4 "
+  style="border-radius: 10px; border: 2px solid #4a0072; max-width: 100%;"
+>
+  <h3 class="text-purple mb-4 text-center text-md-start">Historial de Asistencia</h3>
+
+  <!-- Tabla de Historial de Asistencia -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover border border-purple">
+      <thead class="bg-purple text-white">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID Horario</th>
+          <th scope="col">Nombre del Curso</th>
+          <th scope="col">Hora de Inicio</th>
+          <th scope="col">Presente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asistencia of historialAsistencia; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ asistencia.scheduleId }}</td>
+          <td>{{ asistencia.courseName }}</td>
+          <td>{{ asistencia.startTime }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-success': asistencia.present === true,
+                'bg-danger': asistencia.present === false,
+                'bg-secondary': asistencia.present === null
+              }"
+            >
+              {{
+                asistencia.present === true
+                  ? 'Presente'
+                  : asistencia.present === false
+                  ? 'Ausente'
+                  : 'Pendiente'
+              }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+  </div>
+</div>
