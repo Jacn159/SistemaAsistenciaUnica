@@ -78,17 +78,14 @@
             <span
               class="badge"
               [ngClass]="{
-                'bg-success': asistencia.present === true,
-                'bg-danger': asistencia.present === false,
-                'bg-secondary': asistencia.present === null
+                'bg-success': asistencia.isPresent === true,
+                'bg-warning': asistencia.isPresent === false
               }"
             >
               {{
-                asistencia.present === true
+                asistencia.isPresent
                   ? 'Presente'
-                  : asistencia.present === false
-                  ? 'Ausente'
-                  : 'Pendiente'
+                  : 'Tardanza'
               }}
             </span>
           </td>

@@ -39,6 +39,7 @@ export class AttendanceService {
 
     const data = {
       courseId: id,
+      professorId: sessionStorage.getItem("id")
     };
     console.log(data);
     return this.http

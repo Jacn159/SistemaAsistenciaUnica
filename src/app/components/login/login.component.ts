@@ -12,7 +12,11 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup; // Crea una variable para el formulario
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     // Inicializa el formulario en el constructor
     this.loginForm = this.fb.group({
       username: ['', Validators.required], // Campo de usuario
@@ -25,26 +29,37 @@ export class LoginComponent implements OnInit {
   // Esta función se activa cuando el formulario es enviado
   onLogin() {
     this.authService.login(this.loginForm.value).then((res: any) => {
-      console.log(res)
+      if (res === 'ERROR') {
+        Swal.fire({
+          title: 'Error',
+          text: 'Ocurrió un error al procesar tu solicitud. Por favor, intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#d33',
+          background: '#ffe5e5',
+        });
+        return;
+      }
+
       if (res.success) {
-        console.log("hola")
-        console.log("holi")
         sessionStorage.setItem('token', res.data.username);
         sessionStorage.setItem('id', res.data.id);
-        sessionStorage.setItem('nombres', res.data.firstName+" "+res.data.lastName);
+        sessionStorage.setItem(
+          'nombres',
+          res.data.firstName + ' ' + res.data.lastName
+        );
         sessionStorage.setItem('email', res.data.email);
         sessionStorage.setItem('phoneNumber', res.data.phoneNumber);
 
         this.router.navigate(['/home']);
-      }
-      else{
+      } else {
         Swal.fire({
           title: 'Error',
           text: 'Credenciales incorrectas',
           icon: 'error',
           confirmButtonText: 'Intentar de nuevo',
-          confirmButtonColor: '#6a1b9a',  // Color morado
-          background: '#f3e5f5',  // Fondo morado claro
+          confirmButtonColor: '#6a1b9a', // Color morado
+          background: '#f3e5f5', // Fondo morado claro
         });
       }
     });

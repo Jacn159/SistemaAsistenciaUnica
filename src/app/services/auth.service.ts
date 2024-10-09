@@ -25,7 +25,6 @@ export class AuthService {
       email: form.username,
       password: form.password,
     };
-    console.log(data);
     return this.http
       .post<any>(`${environment.host}${this.loginUrl}`, data, { headers })
       .toPromise()
