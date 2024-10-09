@@ -1,6 +1,8 @@
 import { AttendanceService } from './../../services/attendance.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-history',
@@ -28,7 +30,23 @@ export class HistoryComponent implements OnInit {
       }
     });
   }
+exportToExcel(): void {
+    const worksheet = XLSX.utils.json_to_sheet(
+      this.historialAsistencia.map((asistencia :any, index:any) => ({
+        '#': index + 1,
+        'ID Horario': asistencia.scheduleId,
+        'Nombre del Curso': asistencia.courseName,
+        'Hora de Inicio': asistencia.startTime,
+        'Presente': asistencia.isPresent ? 'Presente' : 'Tardanza'
+      }))
+    );
+    const workbook = { Sheets: { 'Historial': worksheet }, SheetNames: ['Historial'] };
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 
+    // Descargar el archivo
+    const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    saveAs(blob, 'historial_asistencia.xlsx');
+  }
   logout() {
     sessionStorage.clear();
     window.location.reload();

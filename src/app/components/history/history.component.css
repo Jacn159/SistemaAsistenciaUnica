@@ -93,6 +93,9 @@ section {
   .d-flex {
     flex-direction: column;
   }
+  aside{
+    width: 100% !important;
+  }
   .contenedor{
     height: 300vh;
     display: block !important;
